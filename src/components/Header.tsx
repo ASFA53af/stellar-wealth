@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Rocket, Menu, X } from "lucide-react";
 import { useState } from "react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-strong">
@@ -17,17 +20,18 @@ const Header = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Как это работает
+          <a href="/#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            {t("nav.howItWorks")}
           </a>
-          <a href="#satellites" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Спутники
+          <Link to="/satellites" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            {t("nav.satellites")}
+          </Link>
+          <a href="/#stats" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            {t("nav.stats")}
           </a>
-          <a href="#stats" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Статистика
-          </a>
+          <LanguageSwitcher />
           <Link to="/dashboard">
-            <Button variant="hero" size="sm">Личный кабинет</Button>
+            <Button variant="hero" size="sm">{t("nav.dashboard")}</Button>
           </Link>
         </nav>
 
@@ -38,17 +42,18 @@ const Header = () => {
 
       {mobileOpen && (
         <div className="md:hidden glass-strong border-t border-border/50 p-4 flex flex-col gap-4">
-          <a href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
-            Как это работает
+          <a href="/#how-it-works" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
+            {t("nav.howItWorks")}
           </a>
-          <a href="#satellites" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
-            Спутники
+          <Link to="/satellites" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
+            {t("nav.satellites")}
+          </Link>
+          <a href="/#stats" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
+            {t("nav.stats")}
           </a>
-          <a href="#stats" className="text-sm text-muted-foreground" onClick={() => setMobileOpen(false)}>
-            Статистика
-          </a>
+          <LanguageSwitcher />
           <Link to="/dashboard" onClick={() => setMobileOpen(false)}>
-            <Button variant="hero" size="sm" className="w-full">Личный кабинет</Button>
+            <Button variant="hero" size="sm" className="w-full">{t("nav.dashboard")}</Button>
           </Link>
         </div>
       )}

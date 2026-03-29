@@ -1,26 +1,33 @@
 import { motion } from "framer-motion";
-
-const stats = [
-  { value: "$12.4M", label: "Total Value Locked", description: "Общий объём стейкнутых активов" },
-  { value: "18.2%", label: "APY", description: "Среднегодовая доходность" },
-  { value: "3,847", label: "Стейкеров", description: "Активных участников платформы" },
-  { value: "12", label: "Спутников", description: "На орбите и в процессе запуска" },
-  { value: "$2.7M", label: "Выплачено", description: "Суммарно распределено наград" },
-  { value: "142 TB", label: "Геоданных", description: "Собрано и продано клиентам" },
-];
+import { useI18n } from "@/lib/i18n";
 
 const StatsSection = () => {
+  const { t } = useI18n();
+
+  const stats = [
+    { value: "$12.4M", label: "Total Value Locked", description: t("stats.tvl") },
+    { value: "18.2%", label: "APY", description: t("stats.apy") },
+    { value: "3,847", label: t("hero.stakers"), description: t("stats.stakers") },
+    { value: "12", label: t("hero.sats"), description: t("stats.satellites") },
+    { value: "$2.7M", label: t("dash.earned"), description: t("stats.paid") },
+    { value: "142 TB", label: t("sats.data"), description: t("stats.data") },
+  ];
+
   return (
-    <section id="stats" className="py-24 cosmic-gradient">
-      <div className="container mx-auto px-4">
+    <section id="stats" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 cosmic-gradient" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(199,89%,48%,0.06)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(265,80%,60%,0.04)_0%,transparent_50%)]" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Цифры <span className="gradient-text">говорят</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            {t("stats.title1")} <span className="gradient-text">{t("stats.title2")}</span>
           </h2>
         </motion.div>
 
@@ -32,9 +39,9 @@ const StatsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass rounded-xl p-6 text-center hover:box-glow transition-shadow duration-500"
+              className="glass rounded-xl p-8 text-center hover:box-glow-strong transition-all duration-700 hover:-translate-y-1 group"
             >
-              <div className="text-3xl font-bold font-display gradient-text mb-1">{stat.value}</div>
+              <div className="text-4xl font-bold font-display gradient-text mb-2 group-hover:text-glow transition-all">{stat.value}</div>
               <div className="text-sm font-medium text-foreground mb-1">{stat.label}</div>
               <div className="text-xs text-muted-foreground">{stat.description}</div>
             </motion.div>
