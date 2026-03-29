@@ -9,12 +9,16 @@ import satTerraEye from "@/assets/sat-terra-eye.png";
 import satSentinel from "@/assets/sat-sentinel.png";
 import satAquaNet from "@/assets/sat-aqua-net.png";
 import satGeoChron from "@/assets/sat-geo-chron.png";
+import satVega from "@/assets/sat-vega.png";
+import satHyperspectra from "@/assets/sat-hyperspectra.png";
 
 const satellites = [
   { name: "TERRA-EYE 1", status: "active", orbit: "LEO 550km", data: "142 TB", revenue: "$1.2M", image: satTerraEye },
   { name: "SENTINEL-7A", status: "active", orbit: "LEO 600km", data: "98 TB", revenue: "$890K", image: satSentinel },
   { name: "AQUA-NET", status: "active", orbit: "LEO 520km", data: "76 TB", revenue: "$640K", image: satAquaNet },
-  { name: "GEO-CHRON 5", status: "launching", orbit: "LEO 580km", data: "—", revenue: "—", image: satGeoChron },
+  { name: "VEGA-7", status: "active", orbit: "LEO 560km", data: "89 TB", revenue: "$720K", image: satVega },
+  { name: "HYPER-SPECTRA 1", status: "active", orbit: "LEO 540km", data: "56 TB", revenue: "$480K", image: satHyperspectra },
+  { name: "GEO-CHRON 5", status: "launching", orbit: "LEO 580km", data: "34 TB", revenue: "$310K", image: satGeoChron },
 ];
 
 const SatellitesSection = () => {
@@ -35,22 +39,19 @@ const SatellitesSection = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {t("sats.title1")} <span className="gradient-text">{t("sats.title2")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {t("sats.subtitle")}
-          </p>
+          <p className="text-muted-foreground max-w-xl mx-auto">{t("sats.subtitle")}</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {satellites.map((sat, i) => (
             <motion.div
               key={sat.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
               className="glass rounded-xl overflow-hidden group hover:box-glow transition-all duration-700 hover:-translate-y-2"
             >
-              {/* Image */}
               <div className="relative h-48 flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
                 <div className="absolute w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
                 <img
@@ -62,8 +63,6 @@ const SatellitesSection = () => {
                   height={768}
                 />
               </div>
-
-              {/* Info */}
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-display font-bold text-foreground">{sat.name}</h3>
@@ -90,7 +89,7 @@ const SatellitesSection = () => {
         <div className="text-center">
           <Link to="/satellites">
             <Button variant="hero-outline" size="lg">
-              {t("sats.viewAll")} <ArrowRight className="ml-2 h-4 w-4" />
+              {t("sats.viewAll")} (12) <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
