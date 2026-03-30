@@ -25,11 +25,13 @@ const SatellitesSection = () => {
   const { t } = useI18n();
 
   return (
-    <section id="satellites" className="relative py-24 w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(228,25%,8%)] to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(265,80%,60%,0.05)_0%,transparent_60%)]" />
+    <section
+      id="satellites"
+      className="relative py-24 overflow-hidden bg-gradient-to-b from-background via-[hsl(228,25%,8%)] to-background"
+    >
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_bottom_left,hsl(265,80%,60%,0.05)_0%,transparent_60%)]" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
