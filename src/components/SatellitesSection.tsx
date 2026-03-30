@@ -25,7 +25,7 @@ const SatellitesSection = () => {
   const { t } = useI18n();
 
   return (
-    <section id="satellites" className="py-24 relative overflow-hidden">
+    <section id="satellites" className="relative py-24 w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(228,25%,8%)] to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(265,80%,60%,0.05)_0%,transparent_60%)]" />
 
